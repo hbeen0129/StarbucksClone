@@ -1,24 +1,24 @@
+////
+////  ContentView.swift
+////  Starbucks
+////
+////  Created by 이혜빈 on 7/3/25.
+////
 //
-//  ContentView.swift
-//  Starbucks
+//import SwiftUI
 //
-//  Created by 이혜빈 on 7/3/25.
+//struct ContentView: View {
+//    var body: some View {
+//        VStack {
+//            Image(systemName: "globe")
+//                .imageScale(.large)
+//                .foregroundStyle(.tint)
+//            Text("Hello, world!")
+//        }
+//        .padding()
+//    }
+//}
 //
-
-import SwiftUI
-
-struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
-    }
-}
-
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
