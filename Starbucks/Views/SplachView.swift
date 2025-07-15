@@ -10,8 +10,8 @@ import SwiftUI
 struct SplachView: View {
     var body: some View {
         ZStack {
-            Color.maingreen.ignoresSafeArea()
-            Image("starbucksLogo")
+            Color.green02.ignoresSafeArea()
+            Image(.starbucksLogo)
                 .resizable()
                 .frame(width: 168, height: 168, alignment: .center)
         }
