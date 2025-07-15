@@ -33,7 +33,9 @@ struct PopupView: View {
     private var PopImage: some View {
         Image(.popup)
             .resizable()
-            .frame(width: .infinity, height: 650)
+            .aspectRatio(contentMode: .fill)
+            .frame(height: 720)
+            .ignoresSafeArea(.container, edges: .top)
             
     }
     
