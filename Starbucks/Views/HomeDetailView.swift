@@ -26,6 +26,3 @@ struct HomeDetailView: View {
 }
 
 
-//#Preview {
-//    HomeDetailView(item: MenuItem)
-//}

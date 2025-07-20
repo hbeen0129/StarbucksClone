@@ -10,15 +10,29 @@ import SwiftUI
 struct HomeView: View {
     @AppStorage("name") var name: String = ""
     
-    let items: [MenuItem] = [
-            MenuItem(imageName: "espressoCon", title: "에스프레소 콘파나"),
-            MenuItem(imageName: "espressoM", title: "에스프레소 마키아또"),
-            MenuItem(imageName: "iceAm", title: "아이스 카페 아메리카노"),
-            MenuItem(imageName: "hotAm", title: "카페 아메리카노"),
-            MenuItem(imageName: "iceCaramel", title: "아이스 카라멜 마키아또"),
-            MenuItem(imageName: "caramel", title: "카라멜 마키아또")
-           
-        ]
+    let menuItems: [MenuItem] = [
+        MenuItem(imageName: "espressoCon", title: "에스프레소 콘파나"),
+        MenuItem(imageName: "espressoM", title: "에스프레소 마키아또"),
+        MenuItem(imageName: "iceAm", title: "아이스 카페 아메리카노"),
+        MenuItem(imageName: "hotAm", title: "카페 아메리카노"),
+        MenuItem(imageName: "iceCaramel", title: "아이스 카라멜 마키아또"),
+        MenuItem(imageName: "caramel", title: "카라멜 마키아또")
+        
+    ]
+    
+    let campaignItem: [CampaignItem] = [
+        CampaignItem(imageName: "campaign", title: "25년 3월 일회용컵 없는 날 캠페..", subtitle: "매월 10일은 일회용컵 없는 날! 스타벅스 에모매장에서 개인컵 및 다회용 컵을 이용하세요."),
+        CampaignItem(imageName: "community", title: "스타벅스 OOO점을 찾습니다", subtitle: "스타벅스 커뮤니티 스토어 파트너를 운영할 기관을 응모합니다."),
+        CampaignItem(imageName: "newCoffee", title: "2월 8일, 리저브 스프링 신규 커...", subtitle: "산뜻하고 달콤한 풍미가 가득한 리저브를 맛보세요.")
+    ]
+    
+    let dissertItem: [DissertItem] = [
+        DissertItem(imageName: "croissant", title: "너티 크루아상"),
+        DissertItem(imageName: "spicy", title: "매콤 소시지 불고기"),
+        DissertItem(imageName: "miniPie", title: "미니 리프 파이"),
+        DissertItem(imageName: "chocolat", title: "뺑 오 쇼콜라"),
+        DissertItem(imageName: "olive", title: "소시지&올리브 파이")
+    ]
     
     
     
@@ -36,15 +50,31 @@ struct HomeView: View {
                         .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     
-                    sizeupBannerImg
+                    sizeupBannerImgSection
                     
                     recommendMenu(name: name)
                     
-                    recommendMenuList(items: items)
+                    recommendMenuList(items: menuItems)
                     
-                    eventBannerImg
-
-
+                    eventBannerImgSection
+                    
+                    serviceSuscibeImgSection
+                    
+                    campaignSection(items: campaignItem)
+                    
+                    mugImgSection
+                    
+                    onlineImgSection
+                    
+                    deliveryImgSection
+                    
+                    dissertSection(items: dissertItem)
+                    
+                    coldBrewImgSection
+                    
+                    mainImgSection
+                    
+                    makeBannerImgSection
                     
                 }
                 .safeAreaPadding(.horizontal, 10)
@@ -104,7 +134,7 @@ private var topBannerText: some View {
     }
 }
 
-private var sizeupBannerImg: some View {
+private var sizeupBannerImgSection: some View {
     Image(.sizeupBanner)
     
 }
@@ -128,7 +158,7 @@ private func recommendMenu(name: String) -> some View {
 
 private func recommendMenuList(items: [MenuItem]) -> some View {
     let rows = [GridItem(.fixed(130))]
-
+    
     return ScrollView(.horizontal, showsIndicators: false) {
         LazyHGrid(rows: rows, spacing: 16) {
             ForEach(items) { item in
@@ -137,7 +167,7 @@ private func recommendMenuList(items: [MenuItem]) -> some View {
                         Image(item.imageName)
                             .resizable()
                             .scaledToFill()
-                            .frame(width: 120, height: 120)
+                            .frame(width: 130, height: 130)
                             .clipShape(RoundedRectangle(cornerRadius: 16))
                         
                         Text(item.title)
@@ -154,10 +184,106 @@ private func recommendMenuList(items: [MenuItem]) -> some View {
     }
 }
 
-private var eventBannerImg: some View {
+private var eventBannerImgSection: some View {
     Image(.eventBanner)
 }
 
+private var serviceSuscibeImgSection: some View {
+    Image(.serviceSuscibe)
+}
+
+private func campaignSection(items: [CampaignItem]) -> some View  {
+    VStack(alignment: .leading, spacing: 10) {
+        Text("What's New")
+            .font(.mainTextBold24)
+            .foregroundStyle(.black03)
+            .padding(.horizontal, 10)
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            let rows = [GridItem(.fixed(160))]
+            
+            LazyHGrid(rows: rows, spacing: 16) {
+                ForEach(items) { item in
+                    VStack(alignment: .leading, spacing: 10) {
+                        Image(item.imageName)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 242, height: 160)
+                            .clipShape(RoundedRectangle(cornerRadius: 5))
+                        
+                        Text(item.title)
+                            .font(.mainTextSemiBold18)
+                            .foregroundStyle(.black02)
+                        
+                        Text(item.subtitle)
+                            .font(.mainTextSemiBold13)
+                            .foregroundStyle(.gray03)
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
+                    }
+                    .frame(width: 249)
+                }
+            }
+            .padding(.horizontal, 10)
+            .frame(height: 250)
+        }
+    }
+}
+
+private var mugImgSection: some View {
+    Image(.mug)
+}
+
+private var onlineImgSection: some View {
+    Image(.online)
+}
+
+private var deliveryImgSection: some View {
+    Image(.delivery)
+}
+
+private func dissertSection(items: [DissertItem]) -> some View {
+    VStack(alignment: .leading, spacing: 16) {
+        Text("하루가 달콤해지는 디저트")
+            .font(.mainTextBold24)
+            .foregroundStyle(.black03)
+            .padding(.horizontal, 10)
+        
+        ScrollView(.horizontal, showsIndicators: false) {
+            let rows = [GridItem(.fixed(130))]
+            
+            LazyHGrid(rows: rows, spacing: 16) {
+                ForEach(items) { item in
+                    VStack(spacing: 10) {
+                        Image(item.imageName)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 130, height: 130)
+                        
+                        Text(item.title)
+                            .font(.caption)
+                            .foregroundColor(.primary)
+                    }
+                    .frame(width: 130)
+                }
+            }
+            .padding(.horizontal, 10)
+            .frame(height: 200)
+        }
+    }
+}
+
+private var coldBrewImgSection: some View {
+    Image(.coldBrew)
+}
+
+private var mainImgSection: some View {
+    Image(.mainDrinkBanner)
+}
+
+private var makeBannerImgSection: some View {
+    Image(.makeBanner)
+}
 
 #Preview {
     HomeView()
