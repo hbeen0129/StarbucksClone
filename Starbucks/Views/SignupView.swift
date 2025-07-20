@@ -14,6 +14,8 @@ struct SignupView: View {
     @AppStorage("savedEmail") private var savedEmail: String = ""
     @AppStorage("savedPassword") private var savedPassword: String = ""
     
+    @Environment(\.dismiss) private var dismiss
+    
     
     var body: some View {
         VStack {
@@ -24,6 +26,19 @@ struct SignupView: View {
             Spacer()
             
             SignupButton
+        }
+        .navigationTitle("가입하기")
+        .navigationBarTitleDisplayMode(.inline)
+        .navigationBarBackButtonHidden(true)  // 기본 백버튼 숨기기
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button(action: {
+                    dismiss()
+                }) {
+                    Image(systemName: "chevron.left")
+                        .foregroundStyle(.black)
+                }
+            }
         }
         .safeAreaPadding(.horizontal, 19)
         .safeAreaPadding(.top, 172)  // 안전영역 기준으로 172만큼 떨어진다. (안전영역이 위에서부터 172 늘어난거임)
@@ -42,9 +57,23 @@ struct SignupView: View {
     // MARK: 생성하기 버튼
     private var SignupButton: some View {
         MainButton(action: {
+            
+            // 모든 입력이 1글자 이상인지 확인
+            guard !viewModel.user.name.isEmpty,
+                  !viewModel.user.email.isEmpty,
+                  !viewModel.user.ePwd.isEmpty else {
+                print("모든 값을 1글자 이상 적어주세요.")
+                return
+                
+            }
+            
+            // 저장하기
             savedName = viewModel.user.name
             savedEmail = viewModel.user.email
             savedPassword = viewModel.user.ePwd
+            
+            // 로그인 뷰로 다시 돌아가기
+            dismiss()
         }, text: "생성하기")
     }
     
@@ -53,7 +82,7 @@ struct SignupView: View {
         VStack {
             TextField("", text: text, prompt: placeholderText(text: name))
                 .textFieldStyle(.plain)
-                .font(.mainTextBold24)
+                .font(.mainTextRegular18)
                 .foregroundStyle(Color.black)
             
             
@@ -79,8 +108,9 @@ struct SignupView: View {
 }
 
 #Preview {
-    SignupView()
+    NavigationStack {
+        SignupView()
+    }
+    
 }
-
-
 
