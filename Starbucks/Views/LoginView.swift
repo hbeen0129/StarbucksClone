@@ -16,24 +16,27 @@ struct LoginView: View {
     // MARK: - body
     
     var body: some View {
-        VStack() {
-            
-            Spacer()
-            
-            titleGroup
-            
-            Spacer()
-            
-            idGroup
-            
-            Spacer()
-            
-            loginGroup
+        NavigationStack {
+            VStack() {
+                
+                Spacer()
+                
+                titleGroup
+                
+                Spacer()
+                
+                idGroup
+                
+                Spacer()
+                
+                loginGroup
+                
+            }
+            // 전체 가로 패딩 아래 패딩
+            .safeAreaPadding(.horizontal, 19)
+            .safeAreaPadding(.bottom, 63)
             
         }
-        // 전체 가로 패딩 아래 패딩
-        .safeAreaPadding(.horizontal, 19)
-        .safeAreaPadding(.bottom, 63)
         
     }
     
@@ -137,10 +140,13 @@ struct LoginView: View {
     }
     
     private var emailSignUpButton: some View {
-        Text("이메일로 회원가입하기")
-            .font(.mainTextRegular12)
-            .foregroundStyle(.gray04)
-            .underline()
+        NavigationLink(destination: SignupView()) {
+            Text("이메일로 회원가입하기")
+                .font(.mainTextRegular12)
+                .foregroundStyle(.gray04)
+                .underline()
+        }
+        
     }
     
     private var kakaoLogin: some View {

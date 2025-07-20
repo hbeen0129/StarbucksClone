@@ -11,7 +11,7 @@ import SwiftUI
 struct OtherView: View {
     
     // MARK: - Properties
-    @AppStorage("nickname") var nickname: String = ""
+    @AppStorage("name") var name: String = ""
     
     // MARK: - body
     var body: some View {
@@ -34,7 +34,7 @@ struct OtherView: View {
             Button {
                 print("로그아웃")
             } label: {
-                Image("logout")
+                Image("logOut")
                     .resizable()
                     .frame(width: 35, height: 35)
             }
@@ -69,7 +69,7 @@ struct OtherView: View {
     private var mainSection: some View {
         VStack(spacing: 24) {
             VStack(spacing: 5) {
-                Text(nickname == "" ? "(작성한 닉네임)" : nickname)
+                Text(name == "" ? "(작성한 닉네임)" : name)
                     .font(.mainTextSemiBold24)
                     .foregroundStyle(.green01)
                 + Text(" 님")
@@ -90,6 +90,8 @@ struct OtherView: View {
                 MenuButton(text: "전자영수증", image: "receipt")
                 MenuButton(text: "나만의 메뉴", image: "my")
             }
+            
+            
         }
     }
     
