@@ -8,20 +8,17 @@
 import SwiftUI
 
 struct HomeDetailView: View {
-    let item: MenuItem
-    
+    let item: MenuItem    // <-- 여기서 파라미터로 item을 받도록 선언
+
     var body: some View {
         VStack {
+            Text(item.title)
             Image(item.imageName)
                 .resizable()
                 .scaledToFit()
-                .frame(height: 300)
-            
-            Text(item.title)
-                .font(.title)
-                .padding()
+            // 상세 페이지 레이아웃...
         }
-        .navigationTitle("상세 메뉴")
+        .navigationTitle(item.title)
     }
 }
 

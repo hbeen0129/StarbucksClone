@@ -34,8 +34,6 @@ struct HomeView: View {
         DissertItem(imageName: "sausagePi", title: "소시지&올리브 파이")
     ]
     
-    
-    
     var body: some View {
         NavigationStack {
             ScrollView {
