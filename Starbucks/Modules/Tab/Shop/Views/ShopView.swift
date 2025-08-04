@@ -9,32 +9,24 @@ import SwiftUI
 
 struct ShopView: View {
     var body: some View {
-        ScrollView {
-            OnLineSection(item: OnLineItemsData.onLineItems)
-        }
-    }
-}
+        ZStack {
+            Color(.gray08)
+                .ignoresSafeArea()
 
-private func OnLineSection(item: [OnLineItem]) -> some View {
-    VStack(alignment: .leading, spacing: 16) {
-        Text("Starbucks Online Store")
-            .font(.mainTextBold24)
-            .foregroundStyle(.black01)
-        
-        ScrollView(.horizontal, showsIndicators: false) {
-            LazyHStack(spacing: 28) { // 이미지 간 간격 28
-                ForEach(item) { element in
-                    Image(element.image)
-                        .resizable()
-                        .scaledToFit()
-//                        .frame(width: 160, height: 160) // 원하는 사이즈 조절
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+            ScrollView {
+                VStack(spacing: 0) {
+                    OnLineView(item: OnLineItemsData.onLineItems)
+
+                    ProductsView(items: ProductItemsData.productItems)
+
+                    NewProductsView(items: NewProductItemsData.newProductsItems)
+                        .border(.red)
                 }
+                .padding(.horizontal, 19)
             }
         }
     }
 }
-
 
 #Preview {
     ShopView()
