@@ -2,17 +2,30 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>kakao4c04688b32bc62f3fb88d5b4a99d46f8</string>
+			</array>
+		</dict>
+	</array>
+	<key>GOOGLE_KEY</key>
+	<string>$(GOOGLE_KEY)</string>
+	<key>KAKAO_API</key>
+	<string>$(KAKAO_API)</string>
+	<key>KAKAO_RESTKEY</key>
+	<string>$(KAKAO_RESTKEY)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>kakaokompassauth</string>
+	</array>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Pretendard-Black.ttf</string>
-		<string>Pretendard-Bold.ttf</string>
-		<string>Pretendard-ExtraBold.ttf</string>
-		<string>Pretendard-ExtraLight.ttf</string>
-		<string>Pretendard-Light.ttf</string>
-		<string>Pretendard-Medium.ttf</string>
-		<string>Pretendard-Regular.ttf</string>
-		<string>Pretendard-SemiBold.ttf</string>
-		<string>Pretendard-Thin.otf</string>
+		<string>PretendardVariable.ttf</string>
 	</array>
 </dict>
 </plist>
